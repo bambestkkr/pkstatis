@@ -248,7 +248,7 @@
             </div>
         </div>
 
-        <!-- Official Memo Alert Report Modal (A4 Print & PNG Export) -->
+        <!-- Official Memo Alert Report Modal -->
         <div id="alert-report-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4 hidden">
             <div class="glass-card rounded-3xl w-full max-w-4xl p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative">
                 <div class="flex flex-wrap justify-between items-center gap-3 pb-4 border-b border-slate-100 no-print">
@@ -286,7 +286,7 @@
             </div>
         </div>
 
-        <!-- Domain 3: At-Risk Student Database & Repeat Absence Tracker Modal -->
+        <!-- Domain 3: At-Risk Student Database Modal -->
         <div id="risk-students-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4 hidden">
             <div class="glass-card rounded-3xl w-full max-w-5xl p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative">
                 <div class="flex flex-wrap justify-between items-center gap-3 pb-4 border-b border-slate-100 no-print">
@@ -482,8 +482,8 @@
                             class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs focus:ring-2 focus:ring-indigo-400 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1">เส้นทางโฟลเดอร์ Drive ของโรงเรียนใหม่ *</label>
-                        <input type="text" id="clone-school-path" required placeholder="/ระบบสถิติ-ครูที่ปรึกษา_โรงเรียนตัวอย่างวิทยา"
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Google Drive Folder ID ปลายทางของโรงเรียนใหม่ (ไม่บังคับ)</label>
+                        <input type="text" id="clone-school-folder-id" placeholder="วาง Folder ID หรือปล่อยว่างเพื่อสร้างโฟลเดอร์ใหม่อัตโนมัติ"
                             class="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-xs font-mono focus:ring-2 focus:ring-indigo-400 focus:outline-none">
                     </div>
                     <div id="clone-result-box" class="hidden p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs space-y-1.5"></div>
@@ -609,7 +609,6 @@
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                        <!-- Domain 1 -->
                         <div class="rounded-2xl p-5 bg-gradient-to-b from-sky-50/90 to-white border border-sky-100">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="px-3 py-1 rounded-xl text-xs font-bold bg-sky-100 text-sky-800">ด้านที่ 1 (5 คะแนน)</span>
@@ -636,7 +635,6 @@
                             </ul>
                         </div>
 
-                        <!-- Domain 2 -->
                         <div class="rounded-2xl p-5 bg-gradient-to-b from-purple-50/90 to-white border border-purple-100">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="px-3 py-1 rounded-xl text-xs font-bold bg-purple-100 text-purple-800">ด้านที่ 2 (5 คะแนน)</span>
@@ -663,7 +661,6 @@
                             </ul>
                         </div>
 
-                        <!-- Domain 3 -->
                         <div class="rounded-2xl p-5 bg-gradient-to-b from-pink-50/90 to-white border border-pink-100">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="px-3 py-1 rounded-xl text-xs font-bold bg-pink-100 text-pink-800">ด้านที่ 3 (5 คะแนน)</span>
@@ -706,7 +703,6 @@
                         <div class="flex flex-wrap gap-1.5 bg-slate-100/80 p-1.5 rounded-2xl" id="eval-grade-filters"></div>
                     </div>
 
-                    <!-- 3 Domain Selector Cards -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-5" id="domain-selector-cards">
                         <button onclick="setEvalDomain(1)" id="domain-card-1"
                             class="text-left p-4 rounded-2xl border-2 transition flex items-start gap-3">
@@ -981,13 +977,13 @@
                 </div>
 
                 <div id="admin-panel-content" class="hidden space-y-6">
-                    <!-- Google Sheets & Drive Path No-Code Configuration -->
+                    <!-- Google Sheets & Drive Folder ID No-Code Configuration -->
                     <div class="glass-card rounded-3xl p-6">
                         <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
                             <div>
                                 <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">100% No-Code Management</span>
                                 <h3 class="text-lg font-bold text-slate-800 mt-1">ตั้งค่าและติดตั้งฐานข้อมูล Google Sheets & Drive ในครั้งเดียว</h3>
-                                <p class="text-xs text-slate-500">บริหารจัดการทุกอย่างบนหน้าเว็บ เปลี่ยน Sheet ID, Script URL, Drive Path หรือติดตั้งระบบใหม่ได้ในคลิกเดียวโดยไม่ต้องแก้ไขโค้ด</p>
+                                <p class="text-xs text-slate-500">เปลี่ยน Sheet ID, Script URL หรือพิมพ์วาง Google Drive Folder ID เพื่อย้ายที่เก็บไฟล์อย่างเป็นระเบียบได้ทันที</p>
                             </div>
                             <div id="cloud-connection-badge" class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold flex items-center gap-1.5">
                                 <i data-lucide="cloud" class="w-4 h-4 text-indigo-600"></i>
@@ -1027,16 +1023,22 @@
                                 </div>
                             </div>
 
-                            <div class="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/70 space-y-3">
-                                <label class="block text-sm font-bold text-slate-700 flex items-center gap-2">
-                                    <i data-lucide="folder-git-2" class="w-4 h-4 text-amber-600"></i> 3. Google Drive Folder Path (ที่เก็บ PDF/ภาพ)
-                                </label>
-                                <input type="text" id="cfg-drive-path" placeholder="/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน"
-                                    class="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-xs font-mono text-slate-700 focus:ring-2 focus:ring-indigo-400 focus:outline-none">
+                            <div class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <label class="block text-sm font-bold text-slate-800 flex items-center gap-2">
+                                        <i data-lucide="folder-input" class="w-4 h-4 text-amber-600"></i> 3. Google Drive Folder ID (โฟลเดอร์เก็บ PDF/ภาพ)
+                                    </label>
+                                    <span id="drive-folder-name-badge" class="text-[10px] font-semibold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-md">ย้ายโฟลเดอร์ได้ทันที</span>
+                                </div>
+                                <input type="text" id="cfg-drive-folder-id" placeholder="วาง Folder ID หรือลิงก์โฟลเดอร์ Drive (ปล่อยว่าง = สร้างใหม่อัตโนมัติ)"
+                                    class="w-full rounded-xl border border-amber-300 bg-white px-3.5 py-2.5 text-xs font-mono text-slate-700 focus:ring-2 focus:ring-amber-400 focus:outline-none">
                                 <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
-                                    <span class="text-[11px] text-slate-500">สร้างโฟลเดอร์ย่อย 3 หมวดอัตโนมัติ</span>
-                                    <button type="button" onclick="migrateDriveFolder()" class="text-xs font-semibold text-amber-800 hover:text-amber-950 flex items-center gap-1 bg-amber-100/80 px-3 py-1.5 rounded-xl">
-                                        <i data-lucide="folder-sync" class="w-3.5 h-3.5"></i> สร้าง/ย้ายโฟลเดอร์ Drive
+                                    <label class="inline-flex items-center gap-1.5 text-[11px] text-slate-600 cursor-pointer">
+                                        <input type="checkbox" id="cfg-move-existing-files" checked class="w-3.5 h-3.5 accent-amber-600 rounded">
+                                        <span>ย้ายไฟล์หลักฐานเดิมตามไปโฟลเดอร์ใหม่ด้วย</span>
+                                    </label>
+                                    <button type="button" onclick="applyAndMoveDriveFolderById()" class="text-xs font-bold text-white bg-amber-600 hover:bg-amber-700 flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl shadow-sm transition">
+                                        <i data-lucide="folder-sync" class="w-3.5 h-3.5"></i> ย้าย/เปลี่ยนโฟลเดอร์จัดเก็บ
                                     </button>
                                 </div>
                             </div>
@@ -1047,8 +1049,8 @@
                                     <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-[11px] font-bold mb-1">
                                         <i data-lucide="zap" class="w-3.5 h-3.5"></i> ติดตั้งครบจบในคลิกเดียว (One-Click All-in-One Setup)
                                     </div>
-                                    <h4 class="text-base font-bold">ติดตั้งโครงสร้างชีต 7 ตาราง + โฟลเดอร์ Drive + ซิงค์ข้อมูลตั้งต้นทันที</h4>
-                                    <p class="text-xs text-white/90 mt-0.5">ใช้ได้ทั้งตอนเริ่มติดตั้งครั้งแรก และตอนเปลี่ยน Sheet ID / Script URL / Drive Path ใหม่</p>
+                                    <h4 class="text-base font-bold">ติดตั้งโครงสร้างชีต 7 ตาราง + โฟลเดอร์ย่อย Drive + ซิงค์ข้อมูลตั้งต้นทันที</h4>
+                                    <p class="text-xs text-white/90 mt-0.5">ใช้ได้ทั้งตอนเริ่มติดตั้งครั้งแรก และตอนเปลี่ยน Sheet ID / Script URL / Folder ID ใหม่</p>
                                 </div>
                                 <button type="button" onclick="installGoogleSheetDatabase()"
                                     class="px-6 py-3.5 rounded-2xl bg-white hover:bg-amber-50 text-indigo-900 text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md shrink-0 transition">
@@ -1198,6 +1200,8 @@
             config: {
                 sheetId: "",
                 scriptUrl: "",
+                driveFolderId: "",
+                driveFolderName: "",
                 drivePath: "/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน_2569"
             },
             termsData: {}
@@ -1213,6 +1217,13 @@
 
         function getTermKey(year = appState.year, term = appState.term) {
             return `${year}_${term}`;
+        }
+
+        function extractFolderIdFromInput(rawInput) {
+            const raw = String(rawInput || "").trim();
+            if (!raw) return "";
+            const match = raw.match(/[-\w]{25,}/);
+            return match ? match[0] : raw;
         }
 
         function ensureTermDataExists(year, term) {
@@ -1447,7 +1458,7 @@
                 el.style.opacity = "0";
                 el.style.transform = "translateY(-8px)";
                 setTimeout(() => el.remove(), 300);
-            }, 3200);
+            }, 3400);
         }
 
         function openModal(id) {
@@ -1482,8 +1493,8 @@
                     appState.config.sheetId = urlParams.get("sheetId").trim();
                     hasUrlConfig = true;
                 }
-                if (urlParams.get("drivePath")) {
-                    appState.config.drivePath = urlParams.get("drivePath").trim();
+                if (urlParams.get("driveFolderId")) {
+                    appState.config.driveFolderId = extractFolderIdFromInput(urlParams.get("driveFolderId"));
                     hasUrlConfig = true;
                 }
                 if (hasUrlConfig) {
@@ -1501,7 +1512,10 @@
             if (document.getElementById("cfg-script-url")) {
                 document.getElementById("cfg-script-url").value = appState.config.scriptUrl || "";
             }
-            document.getElementById("cfg-drive-path").value = appState.config.drivePath || "";
+            if (document.getElementById("cfg-drive-folder-id")) {
+                document.getElementById("cfg-drive-folder-id").value = appState.config.driveFolderId || "";
+            }
+            updateDriveFolderNameBadge();
 
             updateAuthGateUI();
             renderAuthControls();
@@ -1509,6 +1523,18 @@
             switchTab(appState.activeTab || "dashboard");
             lucide.createIcons();
             setTimeout(() => document.getElementById("login-password")?.focus(), 100);
+        }
+
+        function updateDriveFolderNameBadge() {
+            const badge = document.getElementById("drive-folder-name-badge");
+            if (!badge) return;
+            if (appState.config.driveFolderName) {
+                badge.textContent = `โฟลเดอร์: ${appState.config.driveFolderName}`;
+            } else if (appState.config.driveFolderId) {
+                badge.textContent = `ID: ${appState.config.driveFolderId.slice(0, 10)}...`;
+            } else {
+                badge.textContent = "ย้ายโฟลเดอร์ได้ทันที";
+            }
         }
 
         function updateAuthGateUI() {
@@ -3349,7 +3375,7 @@
         }
 
         // =====================================================================
-        // 10. ADMIN, GOOGLE SHEETS / DRIVE SYNC & BACKUP
+        // 10. ADMIN, GOOGLE SHEETS / DRIVE FOLDER ID SYNC & BACKUP
         // =====================================================================
         function renderAdminTab() {
             const locked = document.getElementById("admin-locked-banner");
@@ -3389,11 +3415,9 @@
 
         function saveSystemConfig(e) {
             e.preventDefault();
-            appState.config.sheetId = document.getElementById("cfg-sheet-id").value.trim();
-            appState.config.scriptUrl = (document.getElementById("cfg-script-url")?.value || "").trim();
-            appState.config.drivePath = document.getElementById("cfg-drive-path").value.trim();
-            saveState();
-            showToast("บันทึกการตั้งค่า Sheet ID, Script URL และโฟลเดอร์ Drive เรียบร้อยแล้ว", "success");
+            getActiveCloudCredentials();
+            updateDriveFolderNameBadge();
+            showToast("บันทึกการตั้งค่า Sheet ID, Script URL และ Folder ID เรียบร้อยแล้ว", "success");
         }
 
         function setCloudStatus(text, isOk = true) {
@@ -3410,12 +3434,22 @@
         function getActiveCloudCredentials() {
             const sheetId = (document.getElementById("cfg-sheet-id")?.value || appState.config.sheetId || "").trim();
             const scriptUrl = (document.getElementById("cfg-script-url")?.value || appState.config.scriptUrl || "").trim();
-            const drivePath = (document.getElementById("cfg-drive-path")?.value || appState.config.drivePath || "/ระบบสถิติ-ครูที่ปรึกษา").trim();
+            const rawFolderInput = (document.getElementById("cfg-drive-folder-id")?.value || appState.config.driveFolderId || "").trim();
+            const driveFolderId = extractFolderIdFromInput(rawFolderInput);
+
             appState.config.sheetId = sheetId;
             appState.config.scriptUrl = scriptUrl;
-            appState.config.drivePath = drivePath;
+            appState.config.driveFolderId = driveFolderId;
+            if (document.getElementById("cfg-drive-folder-id") && driveFolderId) {
+                document.getElementById("cfg-drive-folder-id").value = driveFolderId;
+            }
             saveState();
-            return { sheetId, scriptUrl, drivePath };
+            return {
+                sheetId,
+                scriptUrl,
+                driveFolderId,
+                drivePath: appState.config.drivePath || "/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน"
+            };
         }
 
         async function testGoogleSheetConnection() {
@@ -3444,7 +3478,7 @@
         }
 
         async function installGoogleSheetDatabase() {
-            const { sheetId, scriptUrl, drivePath } = getActiveCloudCredentials();
+            const { sheetId, scriptUrl, driveFolderId, drivePath } = getActiveCloudCredentials();
             if (!scriptUrl) {
                 showToast("กรุณาวาง Google Apps Script Web App URL ในช่องที่ 1 ก่อนกดติดตั้ง", "warning");
                 return;
@@ -3458,16 +3492,26 @@
                         action: "setup",
                         sheetId,
                         scriptUrl,
+                        driveFolderId,
                         drivePath,
                         appState
                     })
                 });
                 const data = await res.json();
                 if (data.status === "success") {
-                    if (data.setupInfo && data.setupInfo.sheetId) {
-                        appState.config.sheetId = data.setupInfo.sheetId;
-                        const sheetInput = document.getElementById("cfg-sheet-id");
-                        if (sheetInput) sheetInput.value = data.setupInfo.sheetId;
+                    if (data.setupInfo) {
+                        if (data.setupInfo.sheetId) {
+                            appState.config.sheetId = data.setupInfo.sheetId;
+                            const sheetInput = document.getElementById("cfg-sheet-id");
+                            if (sheetInput) sheetInput.value = data.setupInfo.sheetId;
+                        }
+                        if (data.setupInfo.rootFolderId) {
+                            appState.config.driveFolderId = data.setupInfo.rootFolderId;
+                            appState.config.driveFolderName = data.setupInfo.rootFolderName || "";
+                            const folderInput = document.getElementById("cfg-drive-folder-id");
+                            if (folderInput) folderInput.value = data.setupInfo.rootFolderId;
+                            updateDriveFolderNameBadge();
+                        }
                         saveState();
                     }
                     setCloudStatus("ติดตั้งครบสมบูรณ์ & ซิงค์ข้อมูลขึ้น Sheets แล้ว", true);
@@ -3483,14 +3527,66 @@
             }
         }
 
+        async function applyAndMoveDriveFolderById() {
+            const { sheetId, scriptUrl, driveFolderId, drivePath } = getActiveCloudCredentials();
+            const moveExistingFiles = document.getElementById("cfg-move-existing-files")?.checked !== false;
+
+            if (!driveFolderId) {
+                showToast("กรุณาวาง Google Drive Folder ID (หรือลิงก์โฟลเดอร์ Drive) ก่อนกดย้ายโฟลเดอร์", "warning");
+                return;
+            }
+
+            if (!scriptUrl || !sheetId) {
+                updateDriveFolderNameBadge();
+                showToast("บันทึก Folder ID ในเครื่องเรียบร้อยแล้ว (เชื่อมต่อ Script URL เพื่อสร้างโฟลเดอร์ย่อยจริงใน Drive)", "info");
+                return;
+            }
+
+            setCloudStatus("กำลังจัดสร้างโฟลเดอร์ย่อยและย้ายไฟล์หลักฐาน...", true);
+            showToast("กำลังเชื่อมโยงโฟลเดอร์ Drive ใหม่และจัดระเบียบไฟล์หลักฐาน...", "info");
+            try {
+                const res = await fetch(scriptUrl, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "updateDriveFolder",
+                        sheetId,
+                        driveFolderId,
+                        drivePath,
+                        moveExistingFiles
+                    })
+                });
+                const data = await res.json();
+                if (data.status === "success" && data.folder) {
+                    appState.config.driveFolderId = data.folder.rootFolderId;
+                    appState.config.driveFolderName = data.folder.rootFolderName || "";
+                    document.getElementById("cfg-drive-folder-id").value = data.folder.rootFolderId;
+                    updateDriveFolderNameBadge();
+                    saveState();
+                    setCloudStatus(`โฟลเดอร์ Drive: ${data.folder.rootFolderName}`, true);
+                    const movedMsg = data.folder.movedFilesCount > 0 ? ` และย้ายไฟล์หลักฐานเดิม ${data.folder.movedFilesCount} ไฟล์ตามไปเรียบร้อยแล้ว` : "";
+                    showToast(`เปลี่ยนโฟลเดอร์ไปยัง "${data.folder.rootFolderName}" สำเร็จ${movedMsg}!`, "success");
+                } else {
+                    setCloudStatus("เปลี่ยนโฟลเดอร์ไม่สำเร็จ", false);
+                    showToast("เกิดข้อผิดพลาด: " + (data.message || "ไม่พบ Folder ID"), "error");
+                }
+            } catch (err) {
+                console.error(err);
+                setCloudStatus("ติดต่อ Drive ไม่สำเร็จ", false);
+                showToast("เกิดข้อผิดพลาดในการเชื่อมต่อ Google Drive", "error");
+            }
+        }
+
         function copyShareableConfigLink() {
-            const { sheetId, scriptUrl, drivePath } = getActiveCloudCredentials();
+            const { sheetId, scriptUrl, driveFolderId } = getActiveCloudCredentials();
             if (!scriptUrl || !sheetId) {
                 showToast("กรุณากรอก Script URL และ Sheet ID ให้เรียบร้อยก่อนสร้างลิงก์แชร์", "warning");
                 return;
             }
             const baseUrl = window.location.origin + window.location.pathname;
-            const shareUrl = `${baseUrl}?scriptUrl=${encodeURIComponent(scriptUrl)}&sheetId=${encodeURIComponent(sheetId)}&drivePath=${encodeURIComponent(drivePath)}`;
+            let shareUrl = `${baseUrl}?scriptUrl=${encodeURIComponent(scriptUrl)}&sheetId=${encodeURIComponent(sheetId)}`;
+            if (driveFolderId) {
+                shareUrl += `&driveFolderId=${encodeURIComponent(driveFolderId)}`;
+            }
 
             const tempInput = document.createElement("textarea");
             tempInput.value = shareUrl;
@@ -3570,7 +3666,7 @@
         }
 
         function uploadFileToGoogleDriveIfConnected(file, category, refKey, onComplete) {
-            const { sheetId, scriptUrl, drivePath } = getActiveCloudCredentials();
+            const { sheetId, scriptUrl, driveFolderId, drivePath } = getActiveCloudCredentials();
             if (!scriptUrl || !sheetId || !file) return;
 
             const reader = new FileReader();
@@ -3583,6 +3679,7 @@
                         body: JSON.stringify({
                             action: "uploadFile",
                             sheetId,
+                            driveFolderId,
                             drivePath,
                             category,
                             yearTerm: getTermKey(),
@@ -3617,7 +3714,8 @@
                 return;
             }
             const newSchoolName = document.getElementById("clone-school-name").value.trim();
-            const newDrivePath = document.getElementById("clone-school-path").value.trim();
+            const newFolderId = extractFolderIdFromInput(document.getElementById("clone-school-folder-id")?.value || "");
+            const newDrivePath = `/ระบบสถิติ-ครูที่ปรึกษา_${newSchoolName}`;
             const resultBox = document.getElementById("clone-result-box");
 
             showToast(`กำลังสร้างสำเนาชีตและโฟลเดอร์ Drive สำหรับ ${newSchoolName}...`, "info");
@@ -3628,6 +3726,7 @@
                         action: "cloneSchoolTemplate",
                         sheetId,
                         newSchoolName,
+                        newFolderId,
                         newDrivePath
                     })
                 });
@@ -3637,6 +3736,7 @@
                     resultBox.innerHTML = `
                         <p class="font-bold text-emerald-900">✓ สร้างสำเนาสำหรับ "${newSchoolName}" เรียบร้อยแล้ว!</p>
                         <p class="text-slate-700"><strong>New Sheet ID:</strong> <code class="bg-white px-1.5 py-0.5 rounded border font-mono select-all">${data.clone.newSheetId}</code></p>
+                        <p class="text-slate-700"><strong>New Folder ID:</strong> <code class="bg-white px-1.5 py-0.5 rounded border font-mono select-all">${data.clone.newFolderId || "-"}</code></p>
                         <div class="flex flex-wrap gap-2 pt-1">
                             <a href="${data.clone.newSheetUrl}" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-semibold">เปิดไฟล์ Google Sheets ใหม่</a>
                             <a href="${data.clone.newFolderUrl}" target="_blank" class="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-semibold">เปิดโฟลเดอร์ Drive ใหม่</a>
@@ -3652,39 +3752,12 @@
             }
         }
 
-        async function migrateDriveFolder() {
-            const newPath = `/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน_${appState.year}_เทอม${appState.term}`;
-            document.getElementById("cfg-drive-path").value = newPath;
-            const { sheetId, scriptUrl } = getActiveCloudCredentials();
-
-            if (scriptUrl && sheetId) {
-                try {
-                    const res = await fetch(scriptUrl, {
-                        method: "POST",
-                        body: JSON.stringify({
-                            action: "updateDrivePath",
-                            sheetId,
-                            drivePath: newPath
-                        })
-                    });
-                    const data = await res.json();
-                    if (data.status === "success") {
-                        showToast("สร้างและย้ายพาร์ทโฟลเดอร์จัดเก็บใน Google Drive จริงเรียบร้อยแล้ว", "success");
-                        return;
-                    }
-                } catch (err) {
-                    console.error(err);
-                }
-            }
-            showToast("อัปเดตพาร์ทโฟลเดอร์จัดเก็บไฟล์ PDF/ภาพ เรียบร้อยแล้ว", "success");
-        }
-
         function backupDatabase() {
             try {
                 const payload = {
                     backupMeta: {
                         app: "AdvisorEvaluationSystem",
-                        version: "2.2",
+                        version: "2.3",
                         exportedAt: new Date().toISOString(),
                         activeYear: appState.year,
                         activeTerm: appState.term
@@ -3748,7 +3821,10 @@
                     if (document.getElementById("cfg-script-url")) {
                         document.getElementById("cfg-script-url").value = appState.config?.scriptUrl || "";
                     }
-                    document.getElementById("cfg-drive-path").value = appState.config?.drivePath || "";
+                    if (document.getElementById("cfg-drive-folder-id")) {
+                        document.getElementById("cfg-drive-folder-id").value = appState.config?.driveFolderId || "";
+                    }
+                    updateDriveFolderNameBadge();
 
                     saveState();
                     event.target.value = "";
