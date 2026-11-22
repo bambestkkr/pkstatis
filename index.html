@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-     <!-- เริ่มต้นส่วนตั้งค่า PWA / ไอคอนบนมือถือ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบสถิติ-ครูที่ปรึกษา | Advisor Statistics System</title>
+    <!-- เริ่มต้นส่วนตั้งค่า PWA / ไอคอนบนมือถือ -->
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#1a73e8">
 
@@ -9,11 +12,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Fix1204">
     <link rel="apple-touch-icon" href="./icon-192x192.png">
-  <!-- สิ้นสุดส่วนตั้งค่า PWA / ไอคอนบนมือถือ -->
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบสถิติ-ครูที่ปรึกษา | Advisor Statistics System</title>
+    <!-- สิ้นสุดส่วนตั้งค่า PWA / ไอคอนบนมือถือ -->
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Prompt & Inter -->
@@ -3767,7 +3767,7 @@
                 const payload = {
                     backupMeta: {
                         app: "AdvisorEvaluationSystem",
-                        version: "2.3",
+                        version: "2.4",
                         exportedAt: new Date().toISOString(),
                         activeYear: appState.year,
                         activeTerm: appState.term
