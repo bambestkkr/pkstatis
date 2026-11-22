@@ -437,6 +437,66 @@
             </div>
         </div>
 
+        <!-- Import / Promote Advisors Modal (Excel & Grade Promotion) -->
+        <div id="advisor-import-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4 hidden no-print">
+            <div class="glass-card rounded-3xl w-full max-w-2xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-center pb-3 mb-4 border-b border-slate-100">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center">
+                            <i data-lucide="users-round" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800">จัดการทำเนียบครูที่ปรึกษาทั้ง 60 ห้อง (Import Excel / เลื่อนชั้น)</h3>
+                            <p class="text-xs text-slate-500">อัปเดตรายชื่อครูยกแผงทั้งโรงเรียน หรือเลื่อนระดับชั้นตามนักเรียนในคลิกเดียว</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal('advisor-import-modal')" class="p-2 rounded-full hover:bg-slate-100 text-slate-400">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <div class="space-y-4 text-xs sm:text-sm">
+                    <!-- Option 1: Promote Grade Level -->
+                    <div class="p-4 rounded-2xl bg-indigo-50/80 border border-indigo-200/80 space-y-2.5">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <span class="px-2 py-0.5 rounded-md bg-indigo-600 text-white text-[10px] font-bold">กรณีครูเลื่อนชั้นตามนักเรียน</span>
+                                <h4 class="font-bold text-indigo-950 mt-1">เลื่อนระดับชั้นครูที่ปรึกษาอัตโนมัติ (ม.1→ม.2, ม.2→ม.3 และ ม.4→ม.5, ม.5→ม.6)</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">ย้ายรายชื่อครูที่ปรึกษาจากระดับชั้นเดิมขึ้น 1 ระดับชั้นโดยอัตโนมัติ (ส่วนห้อง ม.1 และ ม.4 จะเปิดว่างไว้สำหรับครูชุดใหม่)</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" onclick="promoteAdvisorsGradeLevel()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
+                                <i data-lucide="arrow-up-right" class="w-4 h-4"></i> ดำเนินการเลื่อนระดับชั้นครูที่ปรึกษา
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Option 2: Download Template -->
+                    <div class="p-4 rounded-2xl bg-sky-50 border border-sky-200/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <p class="font-bold text-sky-900">นำเข้าจากไฟล์ Excel: ดาวน์โหลดแบบฟอร์ม 60 ห้องปัจจุบัน</p>
+                            <p class="text-xs text-sky-700 mt-0.5">ส่งออกรายชื่อครูทั้ง 60 ห้องเป็นไฟล์ Excel เพื่อนำไปแก้ไขในเครื่องแล้วอัปโหลดกลับเข้ามา</p>
+                        </div>
+                        <button type="button" onclick="downloadAdvisorTemplateExcel()" class="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold flex items-center gap-1.5 shrink-0 shadow-sm">
+                            <i data-lucide="download" class="w-4 h-4"></i> โหลดไฟล์แบบฟอร์ม (.xlsx)
+                        </button>
+                    </div>
+
+                    <!-- Option 3: Upload Excel -->
+                    <div class="p-5 rounded-2xl border-2 border-dashed border-purple-300 bg-purple-50/40 text-center space-y-2">
+                        <i data-lucide="upload-cloud" class="w-9 h-9 text-purple-600 mx-auto"></i>
+                        <p class="font-bold text-slate-800">อัปโหลดไฟล์ Excel ทำเนียบครูที่ปรึกษาชุดใหม่ (.xlsx)</p>
+                        <p class="text-xs text-slate-500">ระบบจะอัปเดตรายชื่อและตำแหน่งครูที่ปรึกษาทั้ง 60 ห้องทันที โดยไม่กระทบคะแนนการประเมินเดิม</p>
+                        <label class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold cursor-pointer shadow-sm mt-2">
+                            <i data-lucide="folder-open" class="w-4 h-4"></i> เลือกไฟล์ Excel ทำเนียบครู (.xlsx)
+                            <input type="file" accept=".xlsx,.xls,.csv" onchange="handleImportAdvisorsExcel(event)" class="hidden">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Add Academic Year Modal -->
         <div id="add-year-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4 hidden no-print">
             <div class="glass-card rounded-3xl w-full max-w-md p-6 sm:p-8 relative">
@@ -545,6 +605,12 @@
                             </select>
                         </div>
 
+                        <!-- Live Real-Time Sync Indicator -->
+                        <div id="live-sync-pill" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200 transition-all">
+                            <span id="live-sync-dot" class="w-2 h-2 rounded-full bg-slate-400"></span>
+                            <span id="live-sync-text">โหมดออฟไลน์</span>
+                        </div>
+
                         <div id="auth-controls" class="flex items-center gap-2"></div>
                     </div>
                 </div>
@@ -640,7 +706,7 @@
                                     <span>ไม่เช็ค 11 – 15 ครั้ง</span><span class="font-bold text-orange-600">2 คะแนน</span>
                                 </li>
                                 <li class="flex justify-between items-center p-2 rounded-xl bg-rose-50/80 text-rose-800">
-                                    <span>ไม่เช็ค 16 ครั้งขึ้นไป</span><span class="font-bold">1 คะแนน</span>
+                                    <span>ไม่เช็ค 16 ครั้งขึ้นไป</span><span class="font-bold">1 คแนน</span>
                                 </li>
                             </ul>
                         </div>
@@ -805,6 +871,10 @@
 
                             <button onclick="exportAdvisorsToExcel()" class="px-3.5 py-2 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
                                 <i data-lucide="file-spreadsheet" class="w-4 h-4"></i> ส่งออก Excel (.xlsx)
+                            </button>
+
+                            <button onclick="openModal('advisor-import-modal')" class="px-3.5 py-2 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
+                                <i data-lucide="file-up" class="w-4 h-4"></i> Import Excel / เลื่อนชั้น
                             </button>
 
                             <button onclick="printAdvisorsRosterA4()" class="px-3.5 py-2 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
@@ -1133,17 +1203,18 @@
                                     <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center mb-3">
                                         <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
                                     </div>
-                                    <h4 class="font-bold text-slate-800 text-sm">รีเซ็ตข้อมูลเพื่อทดลองระบบ</h4>
-                                    <p class="text-xs text-slate-500 mt-1">ล้างคะแนนประเมินและประวัติขาดเรียนทั้งหมดกลับเป็นค่าเริ่มต้น (0 ครั้งไม่เช็ค)</p>
+                                    <h4 class="font-bold text-slate-800 text-sm">เริ่มรอบประเมิน / ภาคเรียนใหม่ (Reset)</h4>
+                                    <p class="text-xs text-slate-500 mt-1">ล้างคะแนนประเมินและประวัติขาดเรียนทั้งหมดกลับเป็นค่าเริ่มต้น (0 ครั้งไม่เช็ค) โดยคงรายชื่อครูทั้ง 60 ห้องไว้ครบ</p>
                                 </div>
                                 <div id="reset-confirm-box" class="mt-4">
                                     <button onclick="promptResetConfirmation()" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold transition">
-                                        ล้างคะแนนทดสอบทั้งหมด
+                                        ล้างคะแนนเพื่อเริ่มรอบใหม่
                                     </button>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Live Database Health & Storage Summary -->
                         <div id="backup-status-summary" class="mt-5 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 text-xs text-slate-600 flex flex-wrap items-center justify-between gap-3"></div>
                     </div>
                 </div>
@@ -1154,9 +1225,6 @@
 
     <!-- Application Logic -->
     <script>
-        // =====================================================================
-        // 1. STATE & DATA INITIALIZATION
-        // =====================================================================
         const POSITIONS = [
             "ครูผู้ช่วย",
             "ครู (คศ.1)",
@@ -1212,16 +1280,111 @@
                 scriptUrl: "",
                 driveFolderId: "",
                 driveFolderName: "",
-                drivePath: "/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน_2569"
+                drivePath: "/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน"
             },
             termsData: {}
         };
 
-        function saveState() {
+        function saveState(skipAutoSync = false) {
             try {
                 localStorage.setItem("advisorEvalAppState_v2", JSON.stringify(appState));
+                if (!skipAutoSync) {
+                    triggerRealtimeAutoSync();
+                }
             } catch (e) {
                 console.error("Failed to save state", e);
+            }
+        }
+
+        let autoSyncDebounceTimer = null;
+        let isAutoSyncInProgress = false;
+        let hasPendingAutoSync = false;
+
+        function updateLiveSyncIndicator(status, text) {
+            const pill = document.getElementById("live-sync-pill");
+            const dot = document.getElementById("live-sync-dot");
+            const label = document.getElementById("live-sync-text");
+            if (!pill || !dot || !label) return;
+
+            pill.classList.remove("hidden");
+            if (status === "syncing") {
+                pill.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 transition-all";
+                dot.className = "w-2 h-2 rounded-full bg-amber-500 animate-ping";
+                label.textContent = text || "กำลังบันทึกขึ้น Sheets...";
+            } else if (status === "synced") {
+                pill.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 transition-all";
+                dot.className = "w-2 h-2 rounded-full bg-emerald-500";
+                label.textContent = text || "อัปเดต Sheets ล่าสุดแล้ว";
+            } else if (status === "error") {
+                pill.className = "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold bg-rose-50 text-rose-800 border border-rose-200 transition-all";
+                dot.className = "w-2 h-2 rounded-full bg-rose-500";
+                label.textContent = text || "ซิงค์ขัดข้อง";
+            } else {
+                pill.className = "hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200 transition-all";
+                dot.className = "w-2 h-2 rounded-full bg-slate-400";
+                label.textContent = text || "ยังไม่เชื่อม Sheets";
+            }
+        }
+
+        function triggerRealtimeAutoSync() {
+            const sheetId = (appState.config && appState.config.sheetId) || "";
+            const scriptUrl = (appState.config && appState.config.scriptUrl) || "";
+            if (!sheetId || !scriptUrl || !appState.auth.isLoggedIn) {
+                return;
+            }
+
+            clearTimeout(autoSyncDebounceTimer);
+            updateLiveSyncIndicator("syncing", "กำลังส่งข้อมูลขึ้น Sheets...");
+            autoSyncDebounceTimer = setTimeout(() => {
+                executeRealtimeSyncToServer();
+            }, 600);
+        }
+
+        async function executeRealtimeSyncToServer() {
+            const sheetId = (appState.config && appState.config.sheetId) || "";
+            const scriptUrl = (appState.config && appState.config.scriptUrl) || "";
+            if (!sheetId || !scriptUrl) return;
+
+            if (isAutoSyncInProgress) {
+                hasPendingAutoSync = true;
+                return;
+            }
+
+            isAutoSyncInProgress = true;
+            hasPendingAutoSync = false;
+            updateLiveSyncIndicator("syncing", "กำลังบันทึกขึ้น Google Sheets...");
+            setCloudStatus("กำลังอัปเดตข้อมูลขึ้น Google Sheets แบบเรียลไทม์...", true);
+
+            try {
+                const res = await fetch(scriptUrl, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        action: "syncAll",
+                        sheetId,
+                        appState
+                    })
+                });
+                const data = await res.json();
+                if (data.status === "success") {
+                    const timeNow = new Date().toLocaleTimeString("th-TH", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+                    updateLiveSyncIndicator("synced", `บันทึก Sheets สำเร็จ (${timeNow})`);
+                    setCloudStatus(`อัปเดตอัตโนมัติล่าสุด: ${timeNow}`, true);
+                    showToast(`อัปเดตข้อมูลลง Google Sheets สำเร็จแล้ว (${timeNow})`, "success");
+                } else {
+                    updateLiveSyncIndicator("error", "บันทึกขึ้น Sheets ไม่สำเร็จ");
+                    setCloudStatus("ซิงค์อัตโนมัติไม่สำเร็จ", false);
+                    showToast("บันทึกขึ้น Google Sheets ไม่สำเร็จ: " + (data.message || ""), "error");
+                }
+            } catch (err) {
+                console.error("Auto-sync error:", err);
+                updateLiveSyncIndicator("error", "การเชื่อมต่อขัดข้อง");
+                setCloudStatus("ไม่สามารถติดต่อ Google Sheets ได้", false);
+                showToast("ไม่สามารถส่งข้อมูลขึ้น Google Sheets ได้ กรุณาตรวจสอบอินเทอร์เน็ต", "error");
+            } finally {
+                isAutoSyncInProgress = false;
+                if (hasPendingAutoSync) {
+                    executeRealtimeSyncToServer();
+                }
             }
         }
 
@@ -1527,6 +1690,12 @@
             }
             updateDriveFolderNameBadge();
 
+            if (appState.config.sheetId && appState.config.scriptUrl) {
+                updateLiveSyncIndicator("synced", "เชื่อมต่อ Sheets (Auto-Sync)");
+            } else {
+                updateLiveSyncIndicator("offline", "ยังไม่เชื่อม Sheets");
+            }
+
             updateAuthGateUI();
             renderAuthControls();
             renderGradeFilterPills();
@@ -1600,7 +1769,7 @@
             if (pass === appState.auth.password) {
                 appState.auth.isLoggedIn = true;
                 appState.auth.role = role;
-                saveState();
+                saveState(true);
                 updateAuthGateUI();
                 renderAuthControls();
                 switchTab(appState.activeTab || "dashboard");
@@ -1633,7 +1802,7 @@
 
         function logout() {
             appState.auth.isLoggedIn = false;
-            saveState();
+            saveState(true);
             updateAuthGateUI();
             renderAuthControls();
             const passInput = document.getElementById("login-password");
@@ -1649,7 +1818,7 @@
         // =====================================================================
         function switchTab(tabId) {
             appState.activeTab = tabId;
-            saveState();
+            saveState(true);
 
             document.querySelectorAll(".tab-content").forEach(el => el.classList.add("hidden"));
             document.getElementById(`tab-${tabId}`)?.classList.remove("hidden");
@@ -1682,7 +1851,7 @@
             appState.year = document.getElementById("select-year").value;
             appState.term = document.getElementById("select-term").value;
             ensureTermDataExists(appState.year, appState.term);
-            saveState();
+            saveState(true);
             switchTab(appState.activeTab);
             showToast(`เปลี่ยนข้อมูลเป็น ปีการศึกษา ${appState.year} ภาคเรียนที่ ${appState.term}`, "info");
         }
@@ -1871,14 +2040,14 @@
 
         function setEvalGrade(grade) {
             appState.evalGradeFilter = grade;
-            saveState();
+            saveState(true);
             renderGradeFilterPills();
             renderEvaluationTable();
         }
 
         function setEvalDomain(domainNum) {
             appState.evalDomain = domainNum;
-            saveState();
+            saveState(true);
 
             [1, 2, 3].forEach(num => {
                 const card = document.getElementById(`domain-card-${num}`);
@@ -1907,7 +2076,7 @@
 
         function changeSelectedEvalDate(val) {
             appState.selectedEvalDate = val;
-            saveState();
+            saveState(true);
             renderDomainToolbar();
             renderEvaluationTable();
             lucide.createIcons();
@@ -2023,7 +2192,7 @@
 
         function changeDomain3Month(val) {
             appState.selectedDomain3Month = parseInt(val, 10) || 1;
-            saveState();
+            saveState(true);
             renderDomainToolbar();
             renderEvaluationTable();
             lucide.createIcons();
@@ -2915,7 +3084,7 @@
         // =====================================================================
         function setAdvisorViewMode(mode) {
             appState.advisorViewMode = mode;
-            saveState();
+            saveState(true);
             renderAdvisorsView();
         }
 
@@ -3065,6 +3234,127 @@
             XLSX.utils.book_append_sheet(wb, ws, `รายชื่อครูที่ปรึกษา_${appState.year}_${appState.term}`);
             XLSX.writeFile(wb, `ทำเนียบครูที่ปรึกษา_${appState.year}_เทอม${appState.term}.xlsx`);
             showToast("ส่งออกไฟล์ Excel รายชื่อครูที่ปรึกษา (.xlsx) เรียบร้อยแล้ว", "success");
+        }
+
+        function downloadAdvisorTemplateExcel() {
+            if (typeof XLSX === "undefined") {
+                showToast("ไม่สามารถโหลดไลบรารี Excel ได้", "error");
+                return;
+            }
+            const rooms = getCurrentClassrooms();
+            const rows = rooms.map((room, idx) => {
+                const a1 = room.advisors[0] || {};
+                const a2 = room.advisors[1] || {};
+                const a3 = room.advisors[2] || {};
+                return {
+                    "ลำดับ": idx + 1,
+                    "ห้องเรียน": room.roomName,
+                    "ครูที่ปรึกษาคนที่ 1": a1.name || "",
+                    "ตำแหน่ง (คนที่ 1)": a1.position || "ครู (คศ.1)",
+                    "ครูที่ปรึกษาคนที่ 2": a2.name || "",
+                    "ตำแหน่ง (คนที่ 2)": a2.position || "ครู (คศ.1)",
+                    "ครูที่ปรึกษาคนที่ 3 (สำรอง/แฝง)": a3.name || "",
+                    "ตำแหน่ง (คนที่ 3)": a3.position || "ครูผู้ช่วย"
+                };
+            });
+            const ws = XLSX.utils.json_to_sheet(rows);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "ทำเนียบครูที่ปรึกษา60ห้อง");
+            XLSX.writeFile(wb, `แบบฟอร์มนำเข้าครูที่ปรึกษา_60ห้อง_${appState.year}.xlsx`);
+            showToast("ดาวน์โหลดแบบฟอร์ม Excel ครูที่ปรึกษาทั้ง 60 ห้องเรียบร้อยแล้ว", "success");
+        }
+
+        function handleImportAdvisorsExcel(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            if (typeof XLSX === "undefined") {
+                showToast("ไม่สามารถโหลดไลบรารี Excel ได้", "error");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: "array" });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const rows = XLSX.utils.sheet_to_json(sheet);
+
+                    if (!rows || rows.length === 0) {
+                        showToast("ไม่พบข้อมูลในไฟล์ Excel ที่เลือก", "error");
+                        return;
+                    }
+
+                    const rooms = getCurrentClassrooms();
+                    let updatedCount = 0;
+
+                    rows.forEach(row => {
+                        const roomName = String(row["ห้องเรียน"] || row["ห้อง"] || "").trim();
+                        if (!roomName) return;
+                        const targetRoom = rooms.find(r => r.roomName === roomName);
+                        if (!targetRoom) return;
+
+                        const n1 = String(row["ครูที่ปรึกษาคนที่ 1"] || "").trim();
+                        const p1 = String(row["ตำแหน่ง (คนที่ 1)"] || targetRoom.advisors[0]?.position || "ครู (คศ.1)").trim();
+                        const n2 = String(row["ครูที่ปรึกษาคนที่ 2"] || "").trim();
+                        const p2 = String(row["ตำแหน่ง (คนที่ 2)"] || targetRoom.advisors[1]?.position || "ครู (คศ.1)").trim();
+                        const n3 = String(row["ครูที่ปรึกษาคนที่ 3 (สำรอง/แฝง)"] || row["ครูที่ปรึกษาคนที่ 3"] || "").trim();
+                        const p3 = String(row["ตำแหน่ง (คนที่ 3)"] || targetRoom.advisors[2]?.position || "ครูผู้ช่วย").trim();
+
+                        targetRoom.advisors = [
+                            { name: n1 === "-" ? "" : n1, position: POSITIONS.includes(p1) ? p1 : "ครู (คศ.1)", isShadow: false },
+                            { name: n2 === "-" ? "" : n2, position: POSITIONS.includes(p2) ? p2 : "ครู (คศ.1)", isShadow: false },
+                            { name: n3 === "-" ? "" : n3, position: POSITIONS.includes(p3) ? p3 : "ครูผู้ช่วย", isShadow: true }
+                        ];
+                        updatedCount++;
+                    });
+
+                    saveState();
+                    closeModal("advisor-import-modal");
+                    renderAdvisorsView();
+                    event.target.value = "";
+                    showToast(`อัปเดตรายชื่อครูที่ปรึกษาสำเร็จจำนวน ${updatedCount} ห้องเรียน`, "success");
+                } catch (err) {
+                    console.error(err);
+                    showToast("เกิดข้อผิดพลาดในการอ่านไฟล์ Excel กรุณาตรวจสอบหัวตาราง", "error");
+                    event.target.value = "";
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        function promoteAdvisorsGradeLevel() {
+            const rooms = getCurrentClassrooms();
+            const snapshotByRoom = {};
+            rooms.forEach(r => {
+                snapshotByRoom[r.roomName] = JSON.parse(JSON.stringify(r.advisors));
+            });
+
+            const emptyAdvisors = () => [
+                { name: "", position: POSITIONS[1], isShadow: false },
+                { name: "", position: POSITIONS[1], isShadow: false },
+                { name: "", position: POSITIONS[0], isShadow: true }
+            ];
+
+            rooms.forEach(room => {
+                const [grade, num] = room.roomName.split("/");
+                if (grade === "ม.2" && snapshotByRoom[`ม.1/${num}`]) {
+                    room.advisors = snapshotByRoom[`ม.1/${num}`];
+                } else if (grade === "ม.3" && snapshotByRoom[`ม.2/${num}`]) {
+                    room.advisors = snapshotByRoom[`ม.2/${num}`];
+                } else if (grade === "ม.5" && snapshotByRoom[`ม.4/${num}`]) {
+                    room.advisors = snapshotByRoom[`ม.4/${num}`];
+                } else if (grade === "ม.6" && snapshotByRoom[`ม.5/${num}`]) {
+                    room.advisors = snapshotByRoom[`ม.5/${num}`];
+                } else if (grade === "ม.1" || grade === "ม.4") {
+                    room.advisors = emptyAdvisors();
+                }
+            });
+
+            saveState();
+            closeModal("advisor-import-modal");
+            renderAdvisorsView();
+            showToast("เลื่อนระดับชั้นครูที่ปรึกษา (ม.1→ม.2→ม.3 และ ม.4→ม.5→ม.6) เรียบร้อยแล้ว", "success");
         }
 
         function printAdvisorsRosterA4() {
@@ -3425,9 +3715,15 @@
 
         function saveSystemConfig(e) {
             e.preventDefault();
-            getActiveCloudCredentials();
+            const { sheetId, scriptUrl } = getActiveCloudCredentials();
             updateDriveFolderNameBadge();
-            showToast("บันทึกการตั้งค่า Sheet ID, Script URL และ Folder ID เรียบร้อยแล้ว", "success");
+            if (sheetId && scriptUrl) {
+                updateLiveSyncIndicator("synced", "เชื่อมต่อ Sheets (Auto-Sync)");
+                executeRealtimeSyncToServer();
+            } else {
+                updateLiveSyncIndicator("offline", "ยังไม่เชื่อม Sheets");
+            }
+            showToast("บันทึกการตั้งค่าและเปิดใช้งาน Auto-Sync เรียบร้อยแล้ว", "success");
         }
 
         function setCloudStatus(text, isOk = true) {
@@ -3869,7 +4165,7 @@
             if (!box) return;
             box.innerHTML = `
                 <button onclick="promptResetConfirmation()" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold transition">
-                    ล้างคะแนนทดสอบทั้งหมด
+                    ล้างคะแนนเพื่อเริ่มรอบใหม่
                 </button>
             `;
         }
