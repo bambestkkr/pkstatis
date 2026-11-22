@@ -1196,7 +1196,7 @@
                 password: "1234"
             },
             config: {
-                sheetId: "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms",
+                sheetId: "",
                 scriptUrl: "",
                 drivePath: "/ระบบสถิติ-ครูที่ปรึกษา/ฐานข้อมูลหลักฐาน_2569"
             },
@@ -1471,7 +1471,6 @@
                 }
             }
 
-            // รองรับการรับค่า Sheet ID / Script URL / Drive Path อัตโนมัติผ่าน URL Query Parameters (สำหรับแชร์ลิงก์ให้โรงเรียนอื่นใช้โดยไม่ต้องตั้งค่าเอง)
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 let hasUrlConfig = false;
@@ -3500,33 +3499,6 @@
             document.execCommand("copy");
             document.body.removeChild(tempInput);
             showToast("คัดลอกลิงก์การตั้งค่าสำเร็จรูปแล้ว สามารถส่งให้โรงเรียน/เครื่องอื่นเปิดใช้งานได้ทันที!", "success");
-        }
-            setCloudStatus("กำลังติดตั้งชีต 7 ตาราง & โฟลเดอร์ Drive...", true);
-            showToast("กำลังติดตั้งโครงสร้างฐานข้อมูลและโฟลเดอร์ Drive อัตโนมัติ...", "info");
-            try {
-                const res = await fetch(scriptUrl, {
-                    method: "POST",
-                    body: JSON.stringify({
-                        action: "setup",
-                        sheetId,
-                        scriptUrl,
-                        drivePath
-                    })
-                });
-                const data = await res.json();
-                if (data.status === "success") {
-                    setCloudStatus("ติดตั้งโครงสร้างฐานข้อมูล & Drive สมบูรณ์", true);
-                    showToast("ติดตั้งชีตทั้ง 7 แท็บและโฟลเดอร์ย่อย 3 หมวดใน Drive เรียบร้อยแล้ว!", "success");
-                    await pushDataToGoogleSheets();
-                } else {
-                    setCloudStatus("ติดตั้งไม่สำเร็จ", false);
-                    showToast("ติดตั้งไม่สำเร็จ: " + data.message, "error");
-                }
-            } catch (err) {
-                console.error(err);
-                setCloudStatus("เกิดข้อผิดพลาดในการติดตั้ง", false);
-                showToast("ไม่สามารถติดต่อ Google Apps Script ได้ กรุณาตรวจสอบ URL", "error");
-            }
         }
 
         async function pushDataToGoogleSheets() {
