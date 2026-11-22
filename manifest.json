@@ -1,7 +1,7 @@
 {
-  "name": "เว็บจองที่นั่งและเช็คชื่อ",
-  "short_name": "ฺBooking",
-  "description": "เว็บจองที่นั่ง1204",
+  "name": "สถิติKKR",
+  "short_name": "ฺสถิติKKR",
+  "description": "สถิติเช็คชื่อ-KKR",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
